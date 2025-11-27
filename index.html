@@ -1,171 +1,438 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Manning</title><meta name="author" content="Manning"><meta name="copyright" content="Manning"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
-<meta property="og:title" content="Manning">
-<meta property="og:url" content="https://manning.xin/index.html">
-<meta property="og:site_name" content="Manning">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
-<meta property="article:author" content="Manning">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://manning.xin/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  date_suffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: undefined,
-  source: {
-    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
-    },
-    fancybox: {
-      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
-    }
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isanchor: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'Manning',
-  isPost: false,
-  isHome: true,
-  isHighlightShrink: false,
-  isToc: false,
-  postUpdate: '2025-11-27 23:04:35'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>辛曼宁的个人网站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
 
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            color: #333;
+            line-height: 1.6;
         }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
 
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        return item.value
-      }
-    }
-  
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
         }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+
+        h1 {
+            font-size: 3rem;
+            color: #ff6b6b;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
-      }
-      const t = saveToLocal.get('theme')
-    
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
-        
-    const detectApple = () => {
-      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a></div></div></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Manning</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Manning</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout hide-aside" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/12/07/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-12-07T05:44:07.869Z" title="发表于 2021-12-07 13:44:07">2021-12-07</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
 
-More info: Writing
-Run server1$ hexo server
+        .subtitle {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
 
-More info: Server
-Generate static files1$ hexo generate
+        .age {
+            font-size: 2rem;
+            color: #4ecdc4;
+            font-weight: bold;
+        }
 
-More info: Generating
-Deploy to remote sites1$ hexo deploy
+        nav {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
 
-More info: Deployment
-</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div></main><footer id="footer" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><div id="footer-wrap"><div class="footer_custom_text">Love U 3000</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>function subtitleType () {
-  if (true) { 
-    var typed = new Typed("#subtitle", {
-      strings: "大家好我是辛曼宁,我今年6岁了,希望大家喜欢我".split(","),
-      startDelay: 300,
-      typeSpeed: 150,
-      loop: true,
-      backSpeed: 50
-    })
-  } else {
-    document.getElementById("subtitle").innerHTML = '大家好我是辛曼宁'
-  }
-}
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
 
-if (true) {
-  if (typeof Typed === 'function') {
-    subtitleType()
-  } else {
-    getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js').then(subtitleType)
-  }
-} else {
-  subtitleType()
-}</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+        nav a {
+            text-decoration: none;
+            color: #666;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        nav a:hover {
+            background: #ff6b6b;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        section {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #4ecdc4;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hobbies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .hobby-card {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border-color: #4ecdc4;
+        }
+
+        .hobby-card i {
+            font-size: 3rem;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+
+        .hobby-card h3 {
+            font-size: 1.5rem;
+            color: #4ecdc4;
+            margin-bottom: 10px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+        }
+
+        .contact-info {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #666;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+        }
+
+        .contact-info i {
+            color: #ff6b6b;
+            margin-right: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            margin-top: 30px;
+            color: #666;
+        }
+
+        .balloon {
+            position: fixed;
+            bottom: -100px;
+            width: 60px;
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(255,255,255,0));
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: float 15s infinite ease-in;
+            z-index: -1;
+        }
+
+        .balloon::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 20px;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .balloon:nth-child(1) {
+            left: 10%;
+            background-color: #ff6b6b;
+            animation-delay: 0s;
+        }
+
+        .balloon:nth-child(2) {
+            left: 30%;
+            background-color: #4ecdc4;
+            animation-delay: 3s;
+        }
+
+        .balloon:nth-child(3) {
+            left: 50%;
+            background-color: #45b7d1;
+            animation-delay: 6s;
+        }
+
+        .balloon:nth-child(4) {
+            left: 70%;
+            background-color: #96ceb4;
+            animation-delay: 9s;
+        }
+
+        .balloon:nth-child(5) {
+            left: 90%;
+            background-color: #ffeaa7;
+            animation-delay: 12s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .hobbies {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 装饰性气球 -->
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+
+    <div class="container">
+        <header>
+            <h1>辛曼宁</h1>
+            <p class="subtitle">欢迎来到我的个人网站</p>
+            <p class="age">我今年 <span id="age">6</span> 岁啦！</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#home"><i class="fas fa-home"></i> 首页</a></li>
+                <li><a href="#about"><i class="fas fa-user"></i> 关于我</a></li>
+                <li><a href="#hobbies"><i class="fas fa-star"></i> 我的爱好</a></li>
+                <li><a href="#gallery"><i class="fas fa-image"></i> 作品展示</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> 联系我</a></li>
+            </ul>
+        </nav>
+
+        <section id="home">
+            <h2><i class="fas fa-heart"></i> 你好呀！</h2>
+            <p class="intro">
+                大家好！我是辛曼宁，一个活泼开朗的6岁小女孩。
+                我喜欢画画、唱歌、跳舞，还喜欢和小伙伴们一起玩游戏。
+                欢迎来到我的个人网站，在这里你可以了解我的生活和兴趣爱好！
+            </p>
+        </section>
+
+        <section id="about">
+            <h2><i class="fas fa-child"></i> 关于我</h2>
+            <p class="intro">
+                我叫辛曼宁，今年6岁，是一名幼儿园大班的小朋友。
+                我出生在美丽的上海，喜欢这里的美食和风景。
+                我的梦想是成为一名画家，画出世界上最美丽的画。
+            </p>
+        </section>
+
+        <section id="hobbies">
+            <h2><i class="fas fa-palette"></i> 我的爱好</h2>
+            <div class="hobbies">
+                <div class="hobby-card">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>画画</h3>
+                    <p>我喜欢用彩色的画笔描绘我心中的世界，尤其是画小公主和小动物。</p>
+                </div>
+                <div class="hobby-card">
+                    <i class="fas fa-music"></i>
+                    <h3>唱歌</h3>
+                    <p>我喜欢唱儿歌，尤其是《小星星》和《两只老虎》，妈妈说我唱得很好听。</p>
+                </div>
+                <div class="hobby-card">
+                    <i class="fas fa-dance"></i>
+                    <h3>跳舞</h3>
+                    <p>我在学习芭蕾舞，喜欢穿着漂亮的舞裙旋转，感觉自己像个小公主。</p>
+                </div>
+                <div class="hobby-card">
+                    <i class="fas fa-gamepad"></i>
+                    <h3>玩游戏</h3>
+                    <p>我喜欢和爸爸妈妈一起玩拼图和积木，还喜欢和小伙伴们玩捉迷藏。</p>
+                </div>
+                <div class="hobby-card">
+                    <i class="fas fa-book"></i>
+                    <h3>阅读</h3>
+                    <p>我喜欢听妈妈讲故事，尤其是童话故事，梦想自己也能成为故事里的主角。</p>
+                </div>
+                <div class="hobby-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>美食</h3>
+                    <p>我喜欢吃冰淇淋、巧克力和水果，尤其是草莓，酸酸甜甜的很好吃。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2><i class="fas fa-camera"></i> 作品展示</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <div style="width: 100%; height: 150px; background: linear-gradient(45deg, #ff9a9e, #fecfef); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">我的画作 1</div>
+                    <p>彩虹小公主</p>
+                </div>
+                <div class="gallery-item">
+                    <div style="width: 100%; height: 150px; background: linear-gradient(45deg, #4ecdc4, #45b7d1); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">我的画作 2</div>
+                    <p>可爱的小兔子</p>
+                </div>
+                <div class="gallery-item">
+                    <div style="width: 100%; height: 150px; background: linear-gradient(45deg, #96ceb4, #ffeaa7); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">我的画作 3</div>
+                    <p>美丽的花园</p>
+                </div>
+                <div class="gallery-item">
+                    <div style="width: 100%; height: 150px; background: linear-gradient(45deg, #ff6b6b, #ee5a24); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">我的画作 4</div>
+                    <p>快乐的生日派对</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2><i class="fas fa-comments"></i> 联系我</h2>
+            <div class="contact-info">
+                <p><i class="fas fa-map-marker-alt"></i> 地址：上海市</p>
+                <p><i class="fas fa-envelope"></i> 邮箱：manning@example.com</p>
+                <p><i class="fas fa-phone"></i> 电话：123-4567-8910</p>
+                <p><i class="fas fa-smile"></i> 欢迎大家来和我做朋友哦！</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 辛曼宁的个人网站 | 设计：充满童趣的儿童网站</p>
+        </footer>
+    </div>
+
+    <script>
+        // 简单的SPA路由
+        document.addEventListener('DOMContentLoaded', function() {
+            // 平滑滚动
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // 年龄动态效果
+            const ageElement = document.getElementById('age');
+            let age = 6;
+            
+            setInterval(() => {
+                ageElement.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    ageElement.style.transform = 'scale(1)';
+                }, 300);
+            }, 3000);
+
+            // 气球动画效果
+            const balloons = document.querySelectorAll('.balloon');
+            balloons.forEach(balloon => {
+                balloon.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            });
+        });
+    </script>
+</body>
+</html>
