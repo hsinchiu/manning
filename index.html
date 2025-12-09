@@ -41,6 +41,119 @@
             overflow-x: hidden;
         }
 
+        /* 动态emoji背景 */
+        .emoji-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-emoji {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.7;
+            animation: float-up linear infinite;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes float-diagonal {
+            0% {
+                transform: translate(0, 100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translate(100px, -100px) rotate(-360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes float-wave {
+            0% {
+                transform: translateX(-100px) translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateX(calc(100vw + 100px)) translateY(-100px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes bounce-float {
+            0%, 100% {
+                transform: translateY(100vh) translateX(0) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            25% {
+                transform: translateY(75vh) translateX(20px) scale(1.1);
+            }
+            50% {
+                transform: translateY(50vh) translateX(-20px) scale(0.9);
+            }
+            75% {
+                transform: translateY(25vh) translateX(10px) scale(1.05);
+            }
+            90% {
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes twirl-float {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(50vh) translateX(50px) rotate(180deg) scale(1.2);
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) translateX(-50px) rotate(360deg) scale(0.8);
+                opacity: 0;
+            }
+        }
+
         /* 柔和的背景装饰 */
         .bg-decoration {
             position: fixed;
@@ -49,7 +162,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
+            z-index: -2;
         }
 
         .bg-circle {
@@ -640,7 +753,10 @@
     </style>
 </head>
 <body>
-    <!-- 背景装饰 -->
+    <!-- 动态emoji背景 -->
+    <div class="emoji-bg" id="emojiBg"></div>
+
+    <!-- 柔和的背景装饰 -->
     <div class="bg-decoration">
         <div class="bg-circle"></div>
         <div class="bg-circle"></div>
@@ -670,9 +786,10 @@
         <div class="hero-content animate-on-scroll">
             <div class="hero-avatar">👧</div>
             <h1 class="hero-title">我是辛曼宁</h1>
-            <p class="hero-subtitle">今年6岁的快乐小天使</p>
+            <p class="hero-subtitle">一个活泼可爱的小女孩</p>
             <p class="hero-description">
-                欢迎来到我的成长小天地！在这里，你可以了解我的兴趣爱好，
+                欢迎来到我的成长小天地！我来自美丽的海滨城市青岛，
+                在这里，你可以了解我的兴趣爱好，
                 看到我的成长记录，一起分享我生活中的点点滴滴。
             </p>
         </div>
@@ -745,11 +862,11 @@
             <div class="timeline-item animate-on-scroll">
                 <div class="timeline-content">
                     <div class="timeline-dot"></div>
-                    <div class="timeline-date">2018年春天</div>
+                    <div class="timeline-date">2019年</div>
                     <h3 class="timeline-event">👶 来到这个世界</h3>
                     <p class="timeline-description">
-                        在一个温暖的春日，我来到了这个美丽的世界，
-                        开始了人生的奇妙旅程。
+                        在金秋十月，我来到了这个美丽的世界，
+                        出生在青岛这座美丽的海滨城市。
                     </p>
                 </div>
             </div>
@@ -757,7 +874,7 @@
             <div class="timeline-item animate-on-scroll">
                 <div class="timeline-content">
                     <div class="timeline-dot"></div>
-                    <div class="timeline-date">2019年</div>
+                    <div class="timeline-date">2020年</div>
                     <h3 class="timeline-event">🚶 迈出第一步</h3>
                     <p class="timeline-description">
                         摇摇晃晃却坚定地迈出了人生的第一步，
@@ -769,7 +886,7 @@
             <div class="timeline-item animate-on-scroll">
                 <div class="timeline-content">
                     <div class="timeline-dot"></div>
-                    <div class="timeline-date">2020年</div>
+                    <div class="timeline-date">2021年</div>
                     <h3 class="timeline-event">🗣️ 第一次说话</h3>
                     <p class="timeline-description">
                         清楚地叫出了"妈妈"，那一刻全家都沉浸在
@@ -781,10 +898,10 @@
             <div class="timeline-item animate-on-scroll">
                 <div class="timeline-content">
                     <div class="timeline-dot"></div>
-                    <div class="timeline-date">2021年</div>
+                    <div class="timeline-date">2022年</div>
                     <h3 class="timeline-event">🏫 走进幼儿园</h3>
                     <p class="timeline-description">
-                        第一次离开父母的怀抱，走进幼儿园的小社会，
+                        第一次离开父母的怀抱，走进幼儿园，
                         认识了许多新朋友，学会了分享和合作。
                     </p>
                 </div>
@@ -793,11 +910,11 @@
             <div class="timeline-item animate-on-scroll">
                 <div class="timeline-content">
                     <div class="timeline-dot"></div>
-                    <div class="timeline-date">2024年</div>
+                    <div class="timeline-date">2025年</div>
                     <h3 class="timeline-event">🎂 6岁生日</h3>
                     <p class="timeline-description">
-                        迎来了6岁的生日，又长大了一岁，
-                        更加懂事、独立，对未来充满期待。
+                        迎来了6岁的生日，度过了美好的生日派对，
+                        又长大了一岁，更加懂事、独立。
                     </p>
                 </div>
             </div>
@@ -881,19 +998,6 @@
             </div>
 
             <div class="skill-item animate-on-scroll">
-                <span class="skill-icon">🏊</span>
-                <h4 class="skill-name">游泳</h4>
-                <div class="skill-level">
-                    <span class="skill-star">⭐</span>
-                    <span class="skill-star">⭐</span>
-                    <span class="skill-star">⭐</span>
-                </div>
-                <p class="skill-description">
-                    正在学习游泳的技能
-                </p>
-            </div>
-
-            <div class="skill-item animate-on-scroll">
                 <span class="skill-icon">🎭</span>
                 <h4 class="skill-name">表演</h4>
                 <div class="skill-level">
@@ -904,6 +1008,20 @@
                 </div>
                 <p class="skill-description">
                     喜欢在舞台上表现自己
+                </p>
+            </div>
+
+            <div class="skill-item animate-on-scroll">
+                <span class="skill-icon">🚴‍♀️</span>
+                <h4 class="skill-name">骑自行车</h4>
+                <div class="skill-level">
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                </div>
+                <p class="skill-description">
+                    喜欢在公园里骑自行车
                 </p>
             </div>
 
@@ -941,8 +1059,8 @@
                 <div class="gallery-caption">阅读时光</div>
             </div>
             <div class="gallery-item animate-on-scroll">
-                🌳
-                <div class="gallery-caption">户外探索</div>
+                🌊
+                <div class="gallery-caption">海边玩耍</div>
             </div>
             <div class="gallery-item animate-on-scroll">
                 🎭
@@ -1027,7 +1145,7 @@
                 <a href="#features" class="footer-link">我的特点</a>
             </div>
             <p class="footer-text">
-                © 2024 辛曼宁的成长小天地 | 用爱记录每一天的美好时光 ✨
+                © 2024 辛曼宁的成长小天地 | 温馨记录 ✨
             </p>
         </div>
     </footer>
@@ -1038,6 +1156,71 @@
     </div>
 
     <script>
+        // 创建动态emoji背景
+        function createFloatingEmojis() {
+            const emojiBg = document.getElementById('emojiBg');
+            const emojis = [
+                '💖', '💕', '💗', '💝', '💘', '💞', '💓', '❤️',  // 爱心系列
+                '🍭', '🍬', '🧁', '🍰', '🎂', '🍩', '🍪', '🍫',  // 甜点系列
+                '🦋', '🐝', '🐛', '🦄', '🐰', '🐱', '🐶',  // 小动物系列
+                '👑', '👸', '🤴', '💎', '💍', '🌟', '✨', '🎀',  // 公主系列
+                '🌸', '🌺', '🌻', '🌹', '🌷', '🌼', '🌙', '⭐',  // 花草星星系列
+                '🎈', '🎁', '🎉', '🎊', '🎀', '🏆', '🥇', '🎨'   // 庆祝系列
+            ];
+
+            const animationTypes = [
+                'float-up',
+                'float-diagonal',
+                'float-wave',
+                'bounce-float',
+                'twirl-float'
+            ];
+
+            function createEmoji() {
+                const emoji = document.createElement('div');
+                emoji.className = 'floating-emoji';
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+                // 随机起始位置
+                const startX = Math.random() * window.innerWidth;
+                emoji.style.left = startX + 'px';
+
+                // 随机动画类型
+                const animationType = animationTypes[Math.floor(Math.random() * animationTypes.length)];
+                emoji.style.animationName = animationType;
+
+                // 随机动画持续时间
+                const duration = 15 + Math.random() * 20; // 15-35秒
+                emoji.style.animationDuration = duration + 's';
+
+                // 随机动画延迟
+                const delay = Math.random() * 10; // 0-10秒延迟
+                emoji.style.animationDelay = delay + 's';
+
+                // 随机大小
+                const scale = 0.8 + Math.random() * 0.7; // 0.8-1.5倍大小
+                emoji.style.fontSize = (2 * scale) + 'rem';
+
+                // 随机透明度
+                emoji.style.opacity = 0.3 + Math.random() * 0.4; // 0.3-0.7透明度
+
+                emojiBg.appendChild(emoji);
+
+                // 动画结束后移除元素
+                setTimeout(() => {
+                    emoji.remove();
+                }, (duration + delay) * 1000);
+            }
+
+            // 初始创建一些emoji
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => createEmoji(), i * 300);
+            }
+
+            // 定期创建新的emoji
+            setInterval(createEmoji, 2000);
+        }
+
         // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1108,11 +1291,28 @@
             observer.observe(el);
         });
 
-        // 页面加载时的初始动画
+        // 页面加载时初始化
         window.addEventListener('load', function() {
+            // 初始动画
             setTimeout(() => {
                 document.querySelector('.hero-content').classList.add('animated');
             }, 300);
+
+            // 启动emoji背景
+            createFloatingEmojis();
+        });
+
+        // 页面可见性改变时处理
+        document.addEventListener('visibilitychange', function() {
+            if (document.visibilityState === 'visible') {
+                // 页面重新可见时，确保有emoji在漂浮
+                const existingEmojis = document.querySelectorAll('.floating-emoji');
+                if (existingEmojis.length < 10) {
+                    for (let i = 0; i < 5; i++) {
+                        setTimeout(() => createFloatingEmojis(), i * 200);
+                    }
+                }
+            }
         });
     </script>
 </body>
