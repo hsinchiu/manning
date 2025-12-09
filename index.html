@@ -3,435 +3,1116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>辛曼宁的个人网站</title>
+    <title>辛曼宁的成长小天地</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+KuaiLe&family=ZCOOL+QingKe+HuangYou&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary-pink: #FF6B9D;
+            --soft-purple: #C66FBC;
+            --sky-blue: #7FCDFF;
+            --warm-yellow: #FECA57;
+            --mint-green: #48DB8A;
+            --peach: #FFB88C;
+            --lavender: #A29BFE;
+            --coral: #FF7675;
+            --cream: #FFF5F5;
+            --text-dark: #2D3436;
+            --text-medium: #636E72;
+            --text-light: #95A5A6;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
-            color: #333;
-            line-height: 1.6;
+        html {
+            scroll-behavior: smooth;
         }
 
-        .container {
+        body {
+            font-family: 'Noto Sans SC', 'ZCOOL KuaiLe', sans-serif;
+            background: linear-gradient(135deg, #FFE5EC 0%, #E8D5FF 25%, #D4E4FF 50%, #FFE5CC 75%, #FFE5EC 100%);
+            min-height: 100vh;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 柔和的背景装饰 */
+        .bg-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.1), transparent);
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .bg-circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .bg-circle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 5s;
+            background: radial-gradient(circle, rgba(124, 111, 255, 0.1), transparent);
+        }
+
+        .bg-circle:nth-child(3) {
+            width: 250px;
+            height: 250px;
+            bottom: 20%;
+            left: 30%;
+            animation-delay: 10s;
+            background: radial-gradient(circle, rgba(254, 202, 87, 0.1), transparent);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(180deg);
+            }
+        }
+
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-        }
-
-        h1 {
-            font-size: 3rem;
-            color: #ff6b6b;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        .age {
-            font-size: 2rem;
-            color: #4ecdc4;
-            font-weight: bold;
-        }
-
-        nav {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        nav ul {
-            list-style: none;
+            padding: 15px 30px;
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        nav a {
+        .logo {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 1.8rem;
+            color: var(--primary-pink);
             text-decoration: none;
-            color: #666;
-            font-size: 1.2rem;
-            font-weight: bold;
-            padding: 10px 20px;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.6);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        nav a:hover {
-            background: #ff6b6b;
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
         }
 
-        section {
-            background: rgba(255, 255, 255, 0.8);
+        .nav-link {
+            color: var(--text-medium);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
             border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
-        h2 {
-            font-size: 2.5rem;
-            color: #4ecdc4;
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-pink);
+            background: rgba(255, 107, 157, 0.1);
+        }
+
+        /* 主页英雄区 */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 30px 60px;
+            position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 60px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-avatar {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--soft-purple));
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+        }
+
+        .hero-title {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 3.5rem;
+            color: var(--text-dark);
             margin-bottom: 20px;
-            text-align: center;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            line-height: 1.2;
         }
 
-        .intro {
-            text-align: center;
-            font-size: 1.3rem;
-            color: #666;
-            max-width: 800px;
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--primary-pink);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-medium);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        /* 内容区块通用样式 */
+        .section {
+            padding: 100px 20px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .hobbies {
+        .section-title {
+            text-align: center;
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 2.8rem;
+            color: var(--text-dark);
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-pink), var(--sky-blue));
+            border-radius: 2px;
+        }
+
+        /* 兴趣爱好卡片 */
+        .hobbies-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
         }
 
         .hobby-card {
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
-            border: 3px solid transparent;
+            text-align: center;
         }
 
         .hobby-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            border-color: #4ecdc4;
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
         }
 
-        .hobby-card i {
-            font-size: 3rem;
-            color: #ff6b6b;
+        .hobby-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .hobby-title {
+            font-size: 1.6rem;
+            color: var(--text-dark);
             margin-bottom: 15px;
+            font-weight: 600;
         }
 
-        .hobby-card h3 {
-            font-size: 1.5rem;
-            color: #4ecdc4;
+        .hobby-description {
+            color: var(--text-medium);
+            line-height: 1.7;
+        }
+
+        /* 成长时间轴 */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary-pink), var(--sky-blue));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: var(--primary-pink);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 3px var(--primary-pink);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--primary-pink);
+            font-weight: 600;
             margin-bottom: 10px;
         }
 
-        .gallery {
+        .timeline-event {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .timeline-description {
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        /* 技能展示 */
+        .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .skill-item {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .skill-name {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .skill-level {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .skill-star {
+            color: var(--warm-yellow);
+            font-size: 1.2rem;
+        }
+
+        .skill-description {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* 照片画廊 */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            margin-top: 30px;
+            margin-top: 60px;
         }
 
         .gallery-item {
-            background: rgba(255, 255, 255, 0.6);
+            position: relative;
             border-radius: 15px;
-            padding: 15px;
-            text-align: center;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            background: white;
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
         }
 
         .gallery-item:hover {
             transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
         }
 
-        .gallery-item img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, #ff9a9e, #fecfef);
-        }
-
-        .contact-info {
-            text-align: center;
-            font-size: 1.3rem;
-            color: #666;
-        }
-
-        .contact-info p {
-            margin: 10px 0;
-        }
-
-        .contact-info i {
-            color: #ff6b6b;
-            margin-right: 10px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 20px;
-            margin-top: 30px;
-            color: #666;
-        }
-
-        .balloon {
-            position: fixed;
-            bottom: -100px;
-            width: 60px;
-            height: 80px;
-            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(255,255,255,0));
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            animation: float 15s infinite ease-in;
-            z-index: -1;
-        }
-
-        .balloon::before {
-            content: '';
+        .gallery-caption {
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 20px;
-            background: rgba(0,0,0,0.2);
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: 20px 15px 15px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .balloon:nth-child(1) {
-            left: 10%;
-            background-color: #ff6b6b;
-            animation-delay: 0s;
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
         }
 
-        .balloon:nth-child(2) {
-            left: 30%;
-            background-color: #4ecdc4;
-            animation-delay: 3s;
+        /* 个性特色 */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
         }
 
-        .balloon:nth-child(3) {
-            left: 50%;
-            background-color: #45b7d1;
-            animation-delay: 6s;
+        .feature-card {
+            background: linear-gradient(135deg, white, rgba(255, 255, 255, 0.9));
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
         }
 
-        .balloon:nth-child(4) {
-            left: 70%;
-            background-color: #96ceb4;
-            animation-delay: 9s;
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .balloon:nth-child(5) {
-            left: 90%;
-            background-color: #ffeaa7;
-            animation-delay: 12s;
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--soft-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: white;
         }
 
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-            }
+        .feature-title {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            font-weight: 600;
         }
 
+        .feature-description {
+            color: var(--text-medium);
+            line-height: 1.7;
+        }
+
+        /* 页脚 */
+        .footer {
+            background: linear-gradient(135deg, var(--primary-pink), var(--soft-purple));
+            color: white;
+            padding: 60px 30px 30px;
+            margin-top: 120px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            opacity: 0.9;
+        }
+
+        .footer-link:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .footer-text {
+            opacity: 0.8;
+            font-size: 0.95rem;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* 回到顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--soft-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4);
+        }
+
+        /* 响应式设计 */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
+            .nav-menu {
+                display: none;
             }
 
-            h2 {
-                font-size: 2rem;
+            .hero-content {
+                padding: 40px 30px;
             }
 
-            nav ul {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
+                padding-left: 60px;
             }
 
-            section {
-                padding: 20px;
+            .timeline-content {
+                width: 100%;
             }
 
-            .hobbies {
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .hobbies-grid,
+            .skills-grid,
+            .features {
                 grid-template-columns: 1fr;
             }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        /* 动画效果 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- 装饰性气球 -->
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
+    <!-- 背景装饰 -->
+    <div class="bg-decoration">
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+    </div>
 
-    <div class="container">
-        <header>
-            <h1>辛曼宁</h1>
-            <p class="subtitle">欢迎来到我的个人网站</p>
-            <p class="age">我今年 <span id="age">6</span> 岁啦！</p>
-        </header>
-
-        <nav>
-            <ul>
-                <li><a href="#home"><i class="fas fa-home"></i> 首页</a></li>
-                <li><a href="#about"><i class="fas fa-user"></i> 关于我</a></li>
-                <li><a href="#hobbies"><i class="fas fa-star"></i> 我的爱好</a></li>
-                <li><a href="#gallery"><i class="fas fa-image"></i> 作品展示</a></li>
-                <li><a href="#contact"><i class="fas fa-envelope"></i> 联系我</a></li>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <span>🌸</span>
+                <span>曼宁的小天地</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">首页</a></li>
+                <li><a href="#hobbies" class="nav-link">爱好</a></li>
+                <li><a href="#timeline" class="nav-link">成长</a></li>
+                <li><a href="#skills" class="nav-link">技能</a></li>
+                <li><a href="#gallery" class="nav-link">相册</a></li>
+                <li><a href="#features" class="nav-link">特色</a></li>
             </ul>
-        </nav>
+        </div>
+    </nav>
 
-        <section id="home">
-            <h2><i class="fas fa-heart"></i> 你好呀！</h2>
-            <p class="intro">
-                大家好！我是辛曼宁，一个活泼开朗的6岁小女孩。
-                我喜欢画画、唱歌、跳舞，还喜欢和小伙伴们一起玩游戏。
-                欢迎来到我的个人网站，在这里你可以了解我的生活和兴趣爱好！
+    <!-- 主页英雄区 -->
+    <section class="hero" id="home">
+        <div class="hero-content animate-on-scroll">
+            <div class="hero-avatar">👧</div>
+            <h1 class="hero-title">我是辛曼宁</h1>
+            <p class="hero-subtitle">今年6岁的快乐小天使</p>
+            <p class="hero-description">
+                欢迎来到我的成长小天地！在这里，你可以了解我的兴趣爱好，
+                看到我的成长记录，一起分享我生活中的点点滴滴。
             </p>
-        </section>
+        </div>
+    </section>
 
-        <section id="about">
-            <h2><i class="fas fa-child"></i> 关于我</h2>
-            <p class="intro">
-                我叫辛曼宁，今年6岁，是一名幼儿园大班的小朋友。
-                我出生在美丽的上海，喜欢这里的美食和风景。
-                我的梦想是成为一名画家，画出世界上最美丽的画。
+    <!-- 兴趣爱好 -->
+    <section class="section" id="hobbies">
+        <h2 class="section-title animate-on-scroll">我的兴趣爱好</h2>
+        <div class="hobbies-grid">
+            <div class="hobby-card animate-on-scroll">
+                <span class="hobby-icon">🎨</span>
+                <h3 class="hobby-title">画画创作</h3>
+                <p class="hobby-description">
+                    我最喜欢用五彩斑斓的画笔描绘心中的世界，
+                    每一幅画都充满了童真和想象力。
+                </p>
+            </div>
+
+            <div class="hobby-card animate-on-scroll">
+                <span class="hobby-icon">📚</span>
+                <h3 class="hobby-title">阅读故事</h3>
+                <p class="hobby-description">
+                    书籍是我最好的朋友，每天沉浸在童话故事中，
+                    与故事主角一起经历奇妙的冒险。
+                </p>
+            </div>
+
+            <div class="hobby-card animate-on-scroll">
+                <span class="hobby-icon">🎵</span>
+                <h3 class="hobby-title">音乐舞蹈</h3>
+                <p class="hobby-description">
+                    音乐让我快乐，舞蹈让我自由，
+                    跟着节拍摆动，释放内心的快乐能量。
+                </p>
+            </div>
+
+            <div class="hobby-card animate-on-scroll">
+                <span class="hobby-icon">🌱</span>
+                <h3 class="hobby-title">自然探索</h3>
+                <p class="hobby-description">
+                    喜欢观察花草树木，感受大自然的神奇，
+                    每一次户外活动都是新的发现之旅。
+                </p>
+            </div>
+
+            <div class="hobby-card animate-on-scroll">
+                <span class="hobby-icon">🎮</span>
+                <h3 class="hobby-title">趣味游戏</h3>
+                <p class="hobby-description">
+                    和小伙伴们一起玩游戏，分享快乐时光，
+                    在游戏中学习友谊和合作的重要。
+                </p>
+            </div>
+
+            <div class="hobby-card animate-on-scroll">
+                <span class="hobby-icon">🧁</span>
+                <h3 class="hobby-title">手工制作</h3>
+                <p class="hobby-description">
+                    喜欢用小手制作各种手工艺品，
+                    创造出独一无二的小作品，充满成就感。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 成长时间轴 -->
+    <section class="section" id="timeline">
+        <h2 class="section-title animate-on-scroll">我的成长足迹</h2>
+        <div class="timeline">
+            <div class="timeline-item animate-on-scroll">
+                <div class="timeline-content">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2018年春天</div>
+                    <h3 class="timeline-event">👶 来到这个世界</h3>
+                    <p class="timeline-description">
+                        在一个温暖的春日，我来到了这个美丽的世界，
+                        开始了人生的奇妙旅程。
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item animate-on-scroll">
+                <div class="timeline-content">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2019年</div>
+                    <h3 class="timeline-event">🚶 迈出第一步</h3>
+                    <p class="timeline-description">
+                        摇摇晃晃却坚定地迈出了人生的第一步，
+                        从此踏上了探索世界的征程。
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item animate-on-scroll">
+                <div class="timeline-content">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2020年</div>
+                    <h3 class="timeline-event">🗣️ 第一次说话</h3>
+                    <p class="timeline-description">
+                        清楚地叫出了"妈妈"，那一刻全家都沉浸在
+                        无比的喜悦和感动中。
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item animate-on-scroll">
+                <div class="timeline-content">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2021年</div>
+                    <h3 class="timeline-event">🏫 走进幼儿园</h3>
+                    <p class="timeline-description">
+                        第一次离开父母的怀抱，走进幼儿园的小社会，
+                        认识了许多新朋友，学会了分享和合作。
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item animate-on-scroll">
+                <div class="timeline-content">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2024年</div>
+                    <h3 class="timeline-event">🎂 6岁生日</h3>
+                    <p class="timeline-description">
+                        迎来了6岁的生日，又长大了一岁，
+                        更加懂事、独立，对未来充满期待。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能展示 -->
+    <section class="section" id="skills">
+        <h2 class="section-title animate-on-scroll">我的小小技能</h2>
+        <div class="skills-grid">
+            <div class="skill-item animate-on-scroll">
+                <span class="skill-icon">🎨</span>
+                <h4 class="skill-name">绘画</h4>
+                <div class="skill-level">
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                </div>
+                <p class="skill-description">
+                    喜欢用色彩表达内心的世界
+                </p>
+            </div>
+
+            <div class="skill-item animate-on-scroll">
+                <span class="skill-icon">🎤</span>
+                <h4 class="skill-name">唱歌</h4>
+                <div class="skill-level">
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                </div>
+                <p class="skill-description">
+                    会唱很多好听的儿歌
+                </p>
+            </div>
+
+            <div class="skill-item animate-on-scroll">
+                <span class="skill-icon">💃</span>
+                <h4 class="skill-name">跳舞</h4>
+                <div class="skill-level">
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                </div>
+                <p class="skill-description">
+                    跟着音乐节奏快乐起舞
+                </p>
+            </div>
+
+            <div class="skill-item animate-on-scroll">
+                <span class="skill-icon">📖</span>
+                <h4 class="skill-name">讲故事</h4>
+                <div class="skill-level">
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                </div>
+                <p class="skill-description">
+                    最喜欢编故事给大家听
+                </p>
+            </div>
+
+            <div class="skill-item animate-on-scroll">
+                <span class="skill-icon">🧩</span>
+                <h4 class="skill-name">拼图</h4>
+                <div class="skill-level">
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                </div>
+                <p class="skill-description">
+                    专注完成各种拼图挑战
+                </p>
+            </div>
+
+            <div class="skill-item animate-on-scroll">
+                <span class="skill-icon">🏊</span>
+                <h4 class="skill-name">游泳</h4>
+                <div class="skill-level">
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                </div>
+                <p class="skill-description">
+                    正在学习游泳的技能
+                </p>
+            </div>
+
+            <div class="skill-item animate-on-scroll">
+                <span class="skill-icon">🎭</span>
+                <h4 class="skill-name">表演</h4>
+                <div class="skill-level">
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                </div>
+                <p class="skill-description">
+                    喜欢在舞台上表现自己
+                </p>
+            </div>
+
+            <div class="skill-item animate-on-scroll">
+                <span class="skill-icon">🌈</span>
+                <h4 class="skill-name">创造</h4>
+                <div class="skill-level">
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                    <span class="skill-star">⭐</span>
+                </div>
+                <p class="skill-description">
+                    总有很多新奇的创意想法
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 照片画廊 -->
+    <section class="section" id="gallery">
+        <h2 class="section-title animate-on-scroll">精彩瞬间</h2>
+        <div class="gallery">
+            <div class="gallery-item animate-on-scroll">
+                🎂
+                <div class="gallery-caption">6岁生日派对</div>
+            </div>
+            <div class="gallery-item animate-on-scroll">
+                🎨
+                <div class="gallery-caption">认真画画中</div>
+            </div>
+            <div class="gallery-item animate-on-scroll">
+                📚
+                <div class="gallery-caption">阅读时光</div>
+            </div>
+            <div class="gallery-item animate-on-scroll">
+                🌳
+                <div class="gallery-caption">户外探索</div>
+            </div>
+            <div class="gallery-item animate-on-scroll">
+                🎭
+                <div class="gallery-caption">舞台表演</div>
+            </div>
+            <div class="gallery-item animate-on-scroll">
+                🎈
+                <div class="gallery-caption">快乐时光</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 个性特色 -->
+    <section class="section" id="features">
+        <h2 class="section-title animate-on-scroll">我的特点</h2>
+        <div class="features">
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">💝</div>
+                <h3 class="feature-title">善良的心</h3>
+                <p class="feature-description">
+                    总是乐于帮助别人，看到需要帮助的小朋友会主动伸出援手，
+                    喜欢分享自己的玩具和零食。
+                </p>
+            </div>
+
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">🌟</div>
+                <h3 class="feature-title">好奇宝宝</h3>
+                <p class="feature-description">
+                    对世界充满好奇，总是问"为什么"，喜欢探索未知的事物，
+                    每一次发现都让我兴奋不已。
+                </p>
+            </div>
+
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">😊</div>
+                <h3 class="feature-title">快乐天使</h3>
+                <p class="feature-description">
+                    爱笑爱闹，活泼开朗，喜欢用笑容感染身边的人，
+                    是大家眼中的开心果。
+                </p>
+            </div>
+
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">🎨</div>
+                <h3 class="feature-title">创意无限</h3>
+                <p class="feature-description">
+                    想象力丰富，喜欢用画笔创造出奇妙的世界，
+                    每一幅画都是内心的真实写照。
+                </p>
+            </div>
+
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">👂</div>
+                <h3 class="feature-title">认真聆听</h3>
+                <p class="feature-description">
+                    善于倾听他人的话语，能够专注地听老师和父母教导，
+                    是个懂事的好孩子。
+                </p>
+            </div>
+
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">🌈</div>
+                <h3 class="feature-title">多彩梦想</h3>
+                <p class="feature-description">
+                    心中装满了彩色的梦想，希望长大后成为画家、老师，
+                    用自己的方式让世界更美好。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 class="footer-title">🌈 辛曼宁的成长小天地</h3>
+            <div class="footer-links">
+                <a href="#home" class="footer-link">首页</a>
+                <a href="#hobbies" class="footer-link">兴趣爱好</a>
+                <a href="#timeline" class="footer-link">成长足迹</a>
+                <a href="#gallery" class="footer-link">精彩瞬间</a>
+                <a href="#features" class="footer-link">我的特点</a>
+            </div>
+            <p class="footer-text">
+                © 2024 辛曼宁的成长小天地 | 用爱记录每一天的美好时光 ✨
             </p>
-        </section>
+        </div>
+    </footer>
 
-        <section id="hobbies">
-            <h2><i class="fas fa-palette"></i> 我的爱好</h2>
-            <div class="hobbies">
-                <div class="hobby-card">
-                    <i class="fas fa-paint-brush"></i>
-                    <h3>画画</h3>
-                    <p>我喜欢用彩色的画笔描绘我心中的世界，尤其是画小公主和小动物。</p>
-                </div>
-                <div class="hobby-card">
-                    <i class="fas fa-music"></i>
-                    <h3>唱歌</h3>
-                    <p>我喜欢唱儿歌，尤其是《小星星》和《两只老虎》，妈妈说我唱得很好听。</p>
-                </div>
-                <div class="hobby-card">
-                    <i class="fas fa-dance"></i>
-                    <h3>跳舞</h3>
-                    <p>我在学习芭蕾舞，喜欢穿着漂亮的舞裙旋转，感觉自己像个小公主。</p>
-                </div>
-                <div class="hobby-card">
-                    <i class="fas fa-gamepad"></i>
-                    <h3>玩游戏</h3>
-                    <p>我喜欢和爸爸妈妈一起玩拼图和积木，还喜欢和小伙伴们玩捉迷藏。</p>
-                </div>
-                <div class="hobby-card">
-                    <i class="fas fa-book"></i>
-                    <h3>阅读</h3>
-                    <p>我喜欢听妈妈讲故事，尤其是童话故事，梦想自己也能成为故事里的主角。</p>
-                </div>
-                <div class="hobby-card">
-                    <i class="fas fa-utensils"></i>
-                    <h3>美食</h3>
-                    <p>我喜欢吃冰淇淋、巧克力和水果，尤其是草莓，酸酸甜甜的很好吃。</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="gallery">
-            <h2><i class="fas fa-camera"></i> 作品展示</h2>
-            <div class="gallery">
-                <div class="gallery-item">
-                    <div style="width: 100%; height: 150px; background: linear-gradient(45deg, #ff9a9e, #fecfef); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">我的画作 1</div>
-                    <p>彩虹小公主</p>
-                </div>
-                <div class="gallery-item">
-                    <div style="width: 100%; height: 150px; background: linear-gradient(45deg, #4ecdc4, #45b7d1); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">我的画作 2</div>
-                    <p>可爱的小兔子</p>
-                </div>
-                <div class="gallery-item">
-                    <div style="width: 100%; height: 150px; background: linear-gradient(45deg, #96ceb4, #ffeaa7); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">我的画作 3</div>
-                    <p>美丽的花园</p>
-                </div>
-                <div class="gallery-item">
-                    <div style="width: 100%; height: 150px; background: linear-gradient(45deg, #ff6b6b, #ee5a24); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">我的画作 4</div>
-                    <p>快乐的生日派对</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2><i class="fas fa-comments"></i> 联系我</h2>
-            <div class="contact-info">
-                <p><i class="fas fa-map-marker-alt"></i> 地址：上海市</p>
-                <p><i class="fas fa-envelope"></i> 邮箱：manning@example.com</p>
-                <p><i class="fas fa-phone"></i> 电话：123-4567-8910</p>
-                <p><i class="fas fa-smile"></i> 欢迎大家来和我做朋友哦！</p>
-            </div>
-        </section>
-
-        <footer>
-            <p>&copy; 2024 辛曼宁的个人网站 | 设计：充满童趣的儿童网站</p>
-        </footer>
+    <!-- 回到顶部按钮 -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
     </div>
 
     <script>
-        // 简单的SPA路由
-        document.addEventListener('DOMContentLoaded', function() {
-            // 平滑滚动
-            document.querySelectorAll('nav a').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 20,
-                        behavior: 'smooth'
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                     });
-                });
+                }
+            });
+        });
+
+        // 导航栏激活状态
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
             });
 
-            // 年龄动态效果
-            const ageElement = document.getElementById('age');
-            let age = 6;
-            
-            setInterval(() => {
-                ageElement.style.transform = 'scale(1.2)';
-                setTimeout(() => {
-                    ageElement.style.transform = 'scale(1)';
-                }, 300);
-            }, 3000);
-
-            // 气球动画效果
-            const balloons = document.querySelectorAll('.balloon');
-            balloons.forEach(balloon => {
-                balloon.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
             });
+
+            // 回到顶部按钮显示/隐藏
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // 回到顶部
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 滚动动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // 观察所有需要动画的元素
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 页面加载时的初始动画
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.querySelector('.hero-content').classList.add('animated');
+            }, 300);
         });
     </script>
 </body>
